@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.chapter1.*;
 import org.example.chapter2.FtToMetr;
+import org.example.chapter2.LogicalOpTable;
 import org.example.chapter2.Sound;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
@@ -19,10 +20,11 @@ public class Main {
 //        InchToMetr inchToMetr = new InchToMetr();
 //        inchToMetr.inchToMetr();
 // System.out.println("в одном футе " + FtToMetr.metrInFt(1) + " метров");
-        Sound sound = new Sound();
-        sound.distance_to_flash(7.2);
-
-
+//        Sound sound = new Sound();
+//        sound.distance_to_flash(7.2);
+        LogicalOpTable logicalOpTable = new LogicalOpTable();
+        logicalOpTable.logicalOpTable();
+        logicalOpTable.logicalOpTableZeroUnit();
 
     }
 }
