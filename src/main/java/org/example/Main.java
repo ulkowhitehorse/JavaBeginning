@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.chapter3.Guess;
 import org.example.chapter3.WhileDemo;
 
 import java.io.IOException;
@@ -25,8 +26,8 @@ public class Main {
 //        logicalOpTable.logicalOpTable();
 //        logicalOpTable.logicalOpTableZeroUnit();э
 
-//        Guess guess = new Guess();
-//        guess.guess();
+        Guess guess = new Guess();
+        guess.guess();
 
 //        Help help = new Help();
 //        help.help();
@@ -34,8 +35,8 @@ public class Main {
 //        ForVar forVar = new ForVar();
 //        forVar.factorialAndSum();
 
-        WhileDemo whileDemo = new WhileDemo();
-        whileDemo.whileAlphavitDemo();
-        whileDemo.whileStepenDemo();
+//        WhileDemo whileDemo = new WhileDemo();
+//        whileDemo.whileAlphavitDemo();
+//        whileDemo.whileStepenDemo();
     }
 }
