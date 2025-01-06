@@ -12,7 +12,7 @@ public class HelpClassDemo {
                 hlpobj.showmenu();
 
                 choice = (char) System.in.read();
-git
+
                 do {
                     ignore = (char) System.in.read();
                 }while(ignore != '\n');
@@ -22,7 +22,8 @@ git
 
             System.out.println("\n");
 
-            hlpobj.helpon(choice }
+            hlpobj.helpon(choice);
+        }
     }
 
 }
