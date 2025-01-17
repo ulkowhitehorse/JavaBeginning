@@ -8,8 +8,12 @@ import java.io.IOException;
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
     public static void main(String[] args) throws IOException {
+        int x = 10;
+        int y;
+//        if (x < 0) y = 10;
+//        else y = 20;
+        y = x < 0 ? 10: 20;
 
-        RegisterChanger registerChanger = new RegisterChanger();
-        registerChanger.changeRegistr();
+        System.out.println("y = " + y);
     }
 }
