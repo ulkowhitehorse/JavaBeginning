@@ -14,6 +14,12 @@ public class TwoDShape {
         height = h;
     }
 
+    // Создать один объект на основе другого
+    TwoDShape(TwoDShape ob) {
+        width = ob.width;
+        height = ob.height;
+    }
+
     // Конструктор для объекта с одинаковыми значениями
     TwoDShape(double x) {
         width = height = x;
@@ -49,6 +55,12 @@ class Triangle extends TwoDShape {
         style = "закрашенный";
     }
 
+    // Создать один объект на основе другого
+    Triangle(Triangle ob) {
+        super(ob);
+        style = ob.style;
+    }
+
     double area() {
         return getWidth() * getHeight() / 2;
     }
@@ -58,13 +70,27 @@ class Triangle extends TwoDShape {
     }
 }
 
+// Расширение класса Triangle
+class ColorTriangle extends Triangle {
+    private String color;
+
+    ColorTriangle(String c, String s, double w, double h) {
+        super(s, w, h);
+
+        color = c;
+    }
+
+    String getColor() { return color; }
+
+    void showColor() {
+        System.out.println("Цвет - " + color);
+    }
+}
+
 class Shapes {
     public static void main(String[] args) {
-        Triangle t1 = new Triangle();
-        Triangle t2 = new Triangle("контурный", 8.0, 12.0);
-        Triangle t3 = new Triangle(4.0);
-
-        t1 = t2;
+        Triangle t1 = new Triangle("контурный", 8.0, 12.0);
+        Triangle t2 = new Triangle(t1);
 
         System.out.println("Информация о t1: ");
         t1.showStyle();
@@ -77,9 +103,5 @@ class Shapes {
         t2.showDim();
         System.out.println("Площадь - " + t2.area());
 
-        System.out.println("Информация о t3: ");
-        t3.showStyle();
-        t3.showDim();
-        System.out.println("Площадь - " + t3.area());
     }
 }
