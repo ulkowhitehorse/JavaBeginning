@@ -1,6 +1,6 @@
 package org.example.chapter7;
 
-public class TwoDShape {
+abstract class TwoDShape {
     private double width;
     private double height;
     private String name;
@@ -43,11 +43,8 @@ public class TwoDShape {
         System.out.println("Ширина и высота - " + width + " и " + height);
     }
 
-    double area() {
-        System.out.println("Метод area() должен быть переопределен");
+    abstract double area();
 
-        return 0.0;
-    }
 }
 
 class Triangle extends TwoDShape {
@@ -133,6 +130,38 @@ class Rectangle extends TwoDShape {
     double area() {
         return getWidth() * getHeight();
     }
+
+
+}
+
+// Расширение класса Circle
+class Circle extends TwoDShape {
+
+    Circle() {
+        super();
+    }
+
+    // width - length длина окружности
+    // height - radius - радиус окружности
+    Circle(double length, double radius, String name) {
+        super(length, radius, name);
+    }
+
+    Circle(Circle ob) {
+        super(ob);
+    }
+
+
+
+    @Override
+    double area() {
+        return Math.PI * Math.pow(getHeight(), 2);
+    }
+
+    @Override
+    void showDim() {
+        System.out.println("Длина круга и радиус круга: " + getWidth() + " " + getHeight());
+    }
 }
 
 class Shapes {
@@ -143,10 +172,11 @@ class Shapes {
         shapes[1] = new Rectangle(10);
         shapes[2] = new Rectangle(10, 4);
         shapes[3] = new Triangle(7.0);
-        shapes[4] = new TwoDShape(10, 20, "фигура");
+        shapes[4] = new Circle(10, 5, "круг");
 
         for(int i = 0; i < shapes.length; i++) {
             System.out.println("Объект - " + shapes[i].getName());
+            shapes[i].showDim();
             System.out.println("Плащадь - " + shapes[i].area());
             System.out.println();
         }
