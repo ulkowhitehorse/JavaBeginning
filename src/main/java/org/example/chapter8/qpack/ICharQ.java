@@ -1,4 +1,4 @@
-package org.example.chapter8;
+package org.example.chapter8.qpack;
 
 // Интерфейс для очереди символов
 public interface ICharQ {
