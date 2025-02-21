@@ -13,7 +13,13 @@ public class IQDemo {
         DynQueue dynQueue = new DynQueue(5);
         CircularQueue circularQueue = new CircularQueue(10);
 
+        // Тестирование модификатора protected
+        Test test = new Test(2);
+        System.out.println("test() = " + test.getTest());
+
+
         ICharQ iQ;
+
 
         char ch;
         int i;
@@ -69,5 +75,16 @@ public class IQDemo {
             System.out.print(ch);
         }
 
+    }
+}
+
+class Test extends FixedQueue {
+
+    public Test(int size) {
+        super(size);
+    }
+
+    public char getTest() {
+        return test();
     }
 }

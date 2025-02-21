@@ -1,6 +1,6 @@
 package org.example.chapter7;
 
-public class Vehicle {
+public class Vehicle implements IVehicle {
     private int passengers;
     private int fuelcap;
     private int mpg;
@@ -13,12 +13,12 @@ public class Vehicle {
     }
 
     // Возвратить дальность поездки транспортного средства
-    int range() {
+    public int range() {
         return mpg * fuelcap;
     }
 
     // Вычислить объем топлива, требующегося для прохождения заданного пути
-    double fuelneeded(int miles) {
+    public double fuelneeded(int miles) {
         return (double) miles / mpg;
     }
 

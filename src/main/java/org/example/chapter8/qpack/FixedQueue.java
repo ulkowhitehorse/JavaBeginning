@@ -31,4 +31,8 @@ public class FixedQueue implements ICharQ {
         getloc++;
         return q[getloc];
     }
+
+    protected char test() {
+        return (char) 0;
+    }
 }
