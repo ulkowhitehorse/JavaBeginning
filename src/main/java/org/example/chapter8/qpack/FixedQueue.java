@@ -1,5 +1,8 @@
 package org.example.chapter8.qpack;
 
+import org.example.chapter9.QueueEmptyException;
+import org.example.chapter9.QueueFullException;
+
 public class FixedQueue implements ICharQ {
     private char[] q; // массив для хранения элементов очереди
     private int putloc, getloc; // индексы вставляемых и извлекаемых элементов
@@ -11,10 +14,9 @@ public class FixedQueue implements ICharQ {
     }
 
     // Поместить символ в очередь
-    public void put(char ch) {
+    public void put(char ch) throws QueueFullException {
         if(putloc==q.length-1) {
-            System.out.println(" - Очередь заполнена");
-            return;
+            throw new QueueFullException(q.length-1);
         }
 
         putloc++;
@@ -22,10 +24,9 @@ public class FixedQueue implements ICharQ {
     }
 
     // Извлечь символ из очереди
-    public char get() {
+    public char get() throws QueueEmptyException {
         if(getloc==putloc) {
-            System.out.println(" - Очередь пуста");
-            return (char) 0;
+            throw new QueueEmptyException();
         }
 
         getloc++;

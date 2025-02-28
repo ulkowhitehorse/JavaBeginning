@@ -11,18 +11,18 @@ public class Stack {
     }
 
     // Положить символ в стек
-    public void push(char ch) {
+    public void push(char ch) throws StackFullException {
         if (sPush < s.length) {
             s[sPush] = ch;
             sPop = sPush;
             sPush++;
         } else {
-            System.out.println("Стек заполнен");
+            throw new StackFullException(s.length-1);
         }
     }
 
     // Вытащить символ из стека
-    public char pop() {
+    public char pop() throws StackEmptyException {
         char popCh;
         if (sPop != 0) {
             popCh = s[sPop];
@@ -31,8 +31,7 @@ public class Stack {
             sPush--;
             return popCh;
         } else {
-            System.out.println("Стек пуст");
-            return (char)0;
+            throw new StackEmptyException();
         }
     }
 
@@ -55,31 +54,84 @@ class SDemo {
         stack.printStack();
 
         // Добавить элементы в стек
-        for(int i=0; i < size; i++) {
-            System.out.println("Добавляю " + (char)('a' + i) + " в очередь.");
-            stack.push((char)('a' + i));
+        try {
+            for (int i = 0; i < size; i++) {
+                System.out.println("Добавляю " + (char) ('a' + i) + " в очередь.");
+                stack.push((char) ('a' + i));
+            }
+        }
+        catch(StackFullException exc) {
+            System.out.println(exc);
         }
 
         // Генерация ошибки
-        stack.push((char)('a' + size));
-
+        try {
+            stack.push((char) ('a' + size));
+        }
+        catch (StackFullException exc) {
+            System.out.println(exc);
+        }
         stack.printStack();
 
         // Удалить элементы из стека
-        for(int i=0; i < size; i++) {
-            System.out.println("Извлекаю элемент " + stack.pop());
+        try {
+            for (int i = 0; i < size; i++) {
+                System.out.println("Извлекаю элемент " + stack.pop());
 
+            }
+        }
+        catch (StackEmptyException exc) {
+            System.out.println(exc);
         }
 
         // Генерация ошибки
-        stack.pop();
+        try {
+            stack.pop();
+        }
+        catch (StackEmptyException exc) {
+            System.out.println(exc);
+        }
 
         System.out.println("Кладу в стек z");
-        stack.push('z');
+        try {
+            stack.push('z');
+        }
+        catch (StackFullException exc) {
+            System.out.println(exc);
+        }
         stack.printStack();
-        System.out.println("Извлекаю элемент " + stack.pop());
+        try {
+            System.out.println("Извлекаю элемент " + stack.pop());
+        }
+        catch (StackEmptyException exc) {
+            System.out.println(exc);
+        }
+        try {
+            System.out.println("Извлекаю элемент " + stack.pop());
+        }
+        catch (StackEmptyException exc) {
+            System.out.println(exc);
+        }
+        stack.printStack();
+    }
+}
 
-        System.out.println("Извлекаю элемент " + stack.pop());
-        stack.printStack();
+class StackEmptyException extends Exception {
+    @Override
+    public String toString() {
+        return "\nСтек пуст. Заполните стек.";
+    }
+}
+
+class StackFullException extends Exception {
+    int size;
+
+    StackFullException (int size) {
+        this.size = size;
+    }
+
+    @Override
+    public String toString() {
+        return "\nСтэк заполнен. Выполните очистку стека. Размер стека " + size;
     }
 }
