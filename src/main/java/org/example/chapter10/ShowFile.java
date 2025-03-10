@@ -7,7 +7,7 @@ import java.io.IOException;
 public class ShowFile {
     public static void main(String[] args) {
         int i;
-        FileInputStream fin;
+ //       FileInputStream fin = null; // Инициализация fin значением null
 
         // Убедиться, что передано имя файла при запуске программы
         if(args.length != 1) {
@@ -15,27 +15,17 @@ public class ShowFile {
             return;
         }
 
-        try {
-            fin = new FileInputStream(args[0]); // Открыть файл
-        } catch (FileNotFoundException exc) {
-            System.out.println("Файл не найден");
-            return;
-        }
+        try (FileInputStream fin = new FileInputStream(args[0])){
+//            fin = new FileInputStream(args[0]); // Открыть файл
 
-        try {
             // Читать байты, пока не встретится символ EOF
             do {
                 i = fin.read();
                 if (i != -1) System.out.print((char) i);
             } while (i != -1); // достижение конца файла
-        } catch(IOException exc) {
-            System.out.println("Ошибка при чтении файла");
+        }  catch(IOException exc) {
+            System.out.println("Ошибка ввода-вывода" + exc);
         }
 
-        try {
-            fin.close();
-        } catch(IOException exc) {
-            System.out.println("Ошибка при закрытии файла");
-        }
     }
 }
