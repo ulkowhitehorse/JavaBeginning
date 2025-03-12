@@ -17,7 +17,7 @@ public class RandomAccessDemo {
             d = raf.readDouble();
             System.out.println("Первое значение: " + d);
 
-            raf.seek(8); // каждые 8 байт новое значение
+            raf.seek(8); // для хранения значения double требуется 8 байт
             d = raf.readDouble();
             System.out.println("Второе значение: " + d);
 
