@@ -1,0 +1,6 @@
+blue
+yellow
+red
+black
+while
+white
