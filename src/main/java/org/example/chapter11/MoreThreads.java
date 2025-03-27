@@ -9,7 +9,7 @@ public class MoreThreads {
         MyThread2 mt2 = new MyThread2("Child #2");
         MyThread2 mt3 = new MyThread2("Child #3");
 
-        for (int i = 0; i < 50; i++) {
+        do {
             System.out.print(".");
             try {
                 Thread.sleep(100);
@@ -17,7 +17,9 @@ public class MoreThreads {
             catch (InterruptedException exc) {
                 System.out.println("Прерывание основного потока");
             }
-        }
+        } while (mt1.thrd.isAlive() ||
+                        mt2.thrd.isAlive() ||
+                        mt3.thrd.isAlive() );
 
         System.out.println("Завершение основного потока");
     }
