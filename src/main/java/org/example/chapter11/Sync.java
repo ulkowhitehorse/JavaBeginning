@@ -6,13 +6,21 @@ public class Sync {
 
         MyThread3 mt1 = new MyThread3("Child #1", a);
         MyThread3 mt2 = new MyThread3("Child #2", a);
+
+        try {
+            mt1.thrd.join();
+            mt2.thrd.join();
+        } catch (InterruptedException exc) {
+            System.out.println("Прерывание основного потока");
+        }
     }
 }
 
 class SumArray {
     private int sum;
 
-    synchronized int sumArray (int nums[]) {
+//    synchronized int sumArray (int nums[]) {
+    int sumArray (int[] nums) {
         sum = 0; // Обнулить сумму
 
         for (int i = 0; i < nums.length; i++) {
@@ -39,6 +47,7 @@ class MyThread3 implements Runnable {
 
     // Создать новый поток
     MyThread3(String name, int nums[]) {
+
         thrd = new Thread(this, name);
         a = nums;
         thrd.start(); // запустить поток
@@ -49,8 +58,9 @@ class MyThread3 implements Runnable {
         int sum;
 
         System.out.println(thrd.getName() + " - запуск");
-
-        answer = sa.sumArray(a);
+        synchronized (sa) { // Вызовы метода sumArray() для объекта sa синхронизированы
+            answer = sa.sumArray(a);
+        }
         System.out.println("СУММА для " + thrd.getName() + ": " + answer);
         System.out.println(thrd.getName() + "  завершение");
     }
