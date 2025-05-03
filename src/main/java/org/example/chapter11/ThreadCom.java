@@ -28,6 +28,12 @@ class TickTock {
 
         System.out.print("Tick ");
 
+        try {
+            wait(500); // Ожидать пол секунды
+        } catch (InterruptedException exc) {
+            System.out.println("Поток прерван");
+        }
+
         state = "ticked"; // установить текущее состояние
                         // после такта "тик"
         notify(); // позволить выполняться методу tock()
@@ -51,9 +57,16 @@ class TickTock {
 
         System.out.println("Tock");
 
+        try {
+            wait(500); // Ожидать пол секунды
+        } catch (InterruptedException exc) {
+            System.out.println("Поток прерван");
+        }
+
         state = "tocked"; // установить текущее состояние после такста "так"
 
         notify(); // позволить выполняться методу tick()
+
         try {
             while(!state.equals("ticked"))
                 wait(); // ожидать до завершения метода tick()
