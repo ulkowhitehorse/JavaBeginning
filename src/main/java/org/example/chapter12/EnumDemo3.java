@@ -11,7 +11,7 @@ public class EnumDemo3 {
         System.out.println("Типичные скорости транспортных средств");
 
         for (Transport2 t : Transport2.values()) {
-            System.out.println(t + ": " + t.getSpeed() + " миль в час");
+            System.out.println(t + ": " + t.getSpeed() + " миль в час          ");
         }
     }
 }
