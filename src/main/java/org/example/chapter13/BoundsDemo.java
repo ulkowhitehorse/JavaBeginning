@@ -3,6 +3,8 @@ package org.example.chapter13;
 public class BoundsDemo {
     public static void main(String[] args) {
 
+        Counter x = new Counter();
+
         NumericFns<Integer> iOb = new NumericFns<Integer>(5);
 
         System.out.println("Обратная величина iOb - " + iOb.reciprocal());
@@ -62,4 +64,25 @@ class NumericFns<T extends Number> {
 
         return false;
     }
+}
+
+class FlightShed<T, V extends T> {
+    T val;
+
+    T MyGen(T set) {
+        val = set;
+        return val;
+    }
+}
+
+interface IGenIF<T, V extends T> {
+
+}
+
+class myClass<T, V extends T> implements IGenIF<T, V> {
+
+}
+
+class Counter<T> {
+
 }

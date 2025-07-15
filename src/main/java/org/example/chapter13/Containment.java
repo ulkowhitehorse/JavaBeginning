@@ -5,3 +5,4 @@ public interface Containment<T> {
     // интерфейс Containment
     boolean contains(T o);
 }
+

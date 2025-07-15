@@ -29,3 +29,5 @@ public class GenQueue<T> implements IGenQ<T> {
         return q[getloc++];
     }
 }
+
+
