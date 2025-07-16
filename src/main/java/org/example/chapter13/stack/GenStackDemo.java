@@ -24,15 +24,37 @@ public class GenStackDemo {
             System.out.println(exc);
         }
 
+        // Поместить один стек из другого стека
+        String[] strStore2 = new String[3];
+        GenStack<String> stk3 = new GenStack<>(strStore2, stk2);
+
+        //отобразить строки
         try {
             System.out.println("Содержимое stk1: ");
             for (int i = 0; i < 10; i++) {
                 n = stk1.pop();
-                System.out.println(n + " ");
+                System.out.print(n + " ");
             }
+
+            System.out.println("\n");
+
+            System.out.println("Содержимое stk2: ");
+            for (int i = 0; i < 3; i++ ){
+                str = stk2.pop();
+                System.out.print(str + " ");
+            }
+
+            System.out.println("\n");
+
+            System.out.println("Содержимое stk3: ");
+            for(int i = 0; i < 3; i++) {
+                str = stk3.pop();
+                System.out.print(str + " ");
+            }
+        } catch(StackEmptyException exc) {
+            System.out.println(exc);
         }
-        catch(StackEmptyException exc) {
-            System.out.println();
-        }
+
+        System.out.println();
     }
 }
